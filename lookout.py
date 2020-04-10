@@ -133,8 +133,7 @@ class KubeLookout:
             print("Waiting for deployment events to come in..")
             for event in stream:
                 print("event:")
-                print(type(event))
-                print(event.__str__.join("\n"))
+                print(json.dumps(event, default=str))
                 deployment = event["object"]
                 self._handle_event(deployment)
 
